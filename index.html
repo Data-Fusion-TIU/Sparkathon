@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sparkathon</title>
+    <style>
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navbar container */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #fff;
+        }
+
+        /* Navbar links */
+        .navbar .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar .nav-links a {
+            color: black;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .navbar .nav-links a:hover {
+            color: #ff9800;
+        }
+
+        /* Welcome screen */
+        .welcome-screen {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 60px); /* Adjust height to fill remaining space */
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        .welcome-screen h1 {
+            font-size: 48px;
+            color: #333;
+        }
+
+        .welcome-screen p {
+            font-size: 24px;
+            color: #777;
+        }
+
+        /* Form container */
+        .form-container {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .form-container input[type="file"],
+        .form-container input[type="text"],
+        .form-container textarea {
+            padding: 10px;
+            font-size: 16px;
+            width: 300px;
+            box-sizing: border-box;
+        }
+
+        .form-container button {
+            padding: 10px 20px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #3f0f8e;
+            border: none;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #ff9800;
+        }
+
+        label{
+            background-color: rgb(22, 84, 171);
+            padding: 5px;
+            color: aliceblue;
+        }
+
+        /* Responsive design for smaller screens */
+        @media (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+            }
+
+            .navbar .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .welcome-screen h1 {
+                font-size: 36px;
+            }
+
+            .welcome-screen p {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <h1>Logo</h1>
+        <div class="nav-links">
+            <a href="#" onclick="showWelcomeScreen()">Home</a>
+            <a href="#" onclick="showRecommendationForm()">Send Recommendation</a>
+            <a href="#" onclick="showOfferForm()">Offers</a>
+            <a href="#">Others</a>
+        </div>
+    </nav>
+
+    <div class="welcome-screen" id="welcomeScreen">
+        <div>
+            <h1>Welcome to Our Website</h1>
+            <p>We're glad you're here. Explore our offers and recommendations.</p>
+        </div>
+    </div>
+
+    <div class="form-container" id="formContainer">
+        <h1>Send Recommendation</h1>
+        <label for="customer">Upload Customer Details</label>
+        <input type="file" id="customerDetails" name="customerDetails" accept=".csv, .xlsx">
+        <label for="product">Upload Product Details</label>
+        <input type="file" id="productDetails" name="productDetails" accept=".csv, .xlsx">
+        <button onclick="sendRecommendation()">Send Recommendation</button>
+    </div>
+
+    <div class="form-container" id="offerFormContainer">
+        <h1>Add an Offer</h1>
+        <input type="text" id="offerItem" placeholder="Item Name">
+        <textarea id="offerDetails" placeholder="Details about the offer" rows="4"></textarea>
+        <button onclick="addOffer()">Add Offer</button>
+    </div>
+
+    <script>
+        function showWelcomeScreen() {
+            document.getElementById('welcomeScreen').style.display = 'flex';
+            document.getElementById('formContainer').style.display = 'none';
+            document.getElementById('offerFormContainer').style.display = 'none';
+        }
+
+        function showRecommendationForm() {
+            document.getElementById('welcomeScreen').style.display = 'none';
+            document.getElementById('formContainer').style.display = 'flex';
+            document.getElementById('offerFormContainer').style.display = 'none';
+        }
+
+        function showOfferForm() {
+            document.getElementById('welcomeScreen').style.display = 'none';
+            document.getElementById('formContainer').style.display = 'none';
+            document.getElementById('offerFormContainer').style.display = 'flex';
+        }
+
+        function sendRecommendation() {
+            alert('Recommendation sent!');
+            // You can add more functionality here, like handling the files
+        }
+
+        function addOffer() {
+            alert('Offer added!');
+            // You can add more functionality here, like saving the offer details
+        }
+    </script>
+
+</body>
+</html>
